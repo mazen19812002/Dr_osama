@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد ميلاد سعيد دكتور أسامة 🎉</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Arabic Fonts (Cairo & Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        * {
+            font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #e0c3fc 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism & Soft Neumorphism Effect */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.68);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 16px 48px 0 rgba(14, 165, 233, 0.15),
+                        inset 0 2px 4px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.22);
+            border-color: rgba(56, 189, 248, 0.8);
+        }
+
+        /* Animated Continuous Gradient Footer */
+        .footer-gradient-bar {
+            background: linear-gradient(270deg, #0284c7, #3b82f6, #6366f1, #8b5cf6, #ec4899, #0284c7);
+            background-size: 400% 400%;
+            animation: footerGradient 8s linear infinite;
+        }
+
+        @keyframes footerGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Balloons Animations */
+        .floating-balloon {
+            position: absolute;
+            bottom: -100px;
+            animation: floatUp 12s linear infinite;
+            pointer-events: auto;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Click Sparkles Effect */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 24px;
+            animation: sparkleAnim 0.8s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes sparkleAnim {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+            100% { opacity: 0; transform: translate(-50%, -100px) scale(1.4) rotate(180deg); }
+        }
+
+        /* Audio Waveform Animation */
+        .wave-bar {
+            width: 5px;
+            height: 18px;
+            background-color: #0284c7;
+            border-radius: 9999px;
+            animation: wavePulse 1s ease-in-out infinite alternate;
+        }
+
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.3s; }
+        .wave-bar:nth-child(6) { animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { animation-delay: 0.25s; }
+
+        @keyframes wavePulse {
+            0% { height: 8px; opacity: 0.4; }
+            100% { height: 30px; opacity: 1; }
+        }
+
+        .paused .wave-bar {
+            animation-play-state: paused;
+            height: 8px !important;
+            opacity: 0.4;
+        }
+
+        /* Party Glow Ambient Lights */
+        .glow-sphere {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* Modal Overlay Fade */
+        .modal-fade {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen justify-between relative select-none items-center">
+
+    <!-- Glowing Background Atmosphere -->
+    <div class="glow-sphere w-96 h-96 bg-sky-300 top-10 right-10"></div>
+    <div class="glow-sphere w-96 h-96 bg-indigo-300 bottom-20 left-10"></div>
+
+    <!-- Floating Balloons Layer -->
+    <div id="balloon-container" class="fixed inset-0 pointer-events-none overflow-hidden"></div>
+
+    <!-- Clean Top Header Card -->
+    <header class="w-full pt-6 sm:pt-8 px-4 z-20 max-w-4xl">
+        <div class="glass-panel rounded-3xl p-4 sm:p-5 flex items-center justify-between border-2 border-white/80">
+            <div class="flex items-center gap-3">
+                <span class="text-4xl sm:text-5xl animate-bounce">🎉</span>
+                <div>
+                    <h1 class="text-xl sm:text-3xl font-black text-sky-950 leading-tight">
+                        🎉 عيد ميلاد سعيد يا دكتور أسامة 👨‍⚕️🎂
+                    </h1>
+                    <p class="text-xs sm:text-sm text-sky-700 font-bold">احتفالية خاصة ومميزة ✨</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 text-2xl sm:text-3xl">
+                <span>🎈</span><span>✨</span><span>🎁</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-4xl mx-auto w-full px-4 py-6 sm:py-8 flex flex-col items-center justify-center gap-6 sm:gap-8 z-10">
+
+        <!-- Birthday Greeting Message Main Card -->
+        <section class="text-center w-full glass-panel rounded-3xl p-6 sm:p-10 relative overflow-hidden border-2 border-white/90 shadow-2xl transition hover:shadow-sky-300/30">
+            <div class="inline-block px-5 py-2 rounded-full bg-sky-100/90 text-sky-900 text-sm sm:text-base font-extrabold mb-6 shadow-sm border border-sky-200">
+                ✨ تهنئة خاصة وعزيزة جداً ✨
+            </div>
+
+            <h2 class="text-2xl sm:text-4xl font-black text-sky-950 mb-6 leading-tight">
+                كل سنة وأنت طيب يا <span class="bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">دكتور أسامة</span> ❤️
+            </h2>
+
+            <!-- Exact Greeting Paragraph 1 -->
+            <p class="text-lg sm:text-2xl font-bold text-gray-800 leading-relaxed max-w-3xl mx-auto mb-5">
+                "عيد ميلاد سعيد عليك يا صديقي وزميلي العزيز، يا رب تكون سنة جديدة مليانة خير وسعادة ونجاح"
+            </p>
+
+            <!-- Exact Greeting Paragraph 2 -->
+            <div class="p-5 sm:p-7 rounded-2xl bg-white/85 border border-white shadow-inner max-w-3xl mx-auto transform hover:scale-[1.01] transition">
+                <p class="text-lg sm:text-2xl font-black text-sky-950 leading-relaxed">
+                    "عقبال مليون سنة يا دكتور أسامة، وكل سنة وأنت طيب وبخير وسعادة يا رب ❤️🎉"
+                </p>
+            </div>
+        </section>
+
+        <!-- Auto-playing Voice Message Player Card (2.mp3) -->
+        <section class="w-full glass-panel rounded-3xl p-5 sm:p-7 border-2 border-sky-200 shadow-xl">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-600 to-indigo-600 text-white flex items-center justify-center text-2xl shadow-lg">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                    <div class="text-center sm:text-right">
+                        <h3 class="text-lg sm:text-2xl font-black text-sky-950">الرسالة الصوتية 🎙️</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 font-bold">صوت التهنئة (2.mp3)</p>
+                    </div>
+                </div>
+                <!-- Status Badge -->
+                <span id="voice-status" class="px-4 py-1.5 rounded-full bg-sky-100 text-sky-900 font-bold text-xs sm:text-sm flex items-center gap-2 border border-sky-300">
+                    <span class="w-2.5 h-2.5 rounded-full bg-sky-600 animate-ping"></span>
+                    جارٍ التشغيل تلقائياً...
+                </span>
+            </div>
+
+            <!-- Voice Control Component -->
+            <div class="bg-white/90 rounded-2xl p-4 sm:p-5 border border-white shadow-inner flex flex-col gap-3">
+                <div class="flex items-center gap-4">
+                    <!-- Play / Pause Button -->
+                    <button id="voice-play-btn" onclick="toggleVoiceMessage()" class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-600 hover:bg-sky-700 text-white flex items-center justify-center text-xl sm:text-2xl shadow-lg transition active:scale-95 shrink-0">
+                        <i id="voice-play-icon" class="fa-solid fa-pause"></i>
+                    </button>
+
+                    <!-- Interactive Waveform Animation -->
+                    <div id="waveform" class="flex items-center gap-1.5 sm:gap-2 px-4 py-3 bg-sky-50 rounded-xl border border-sky-100 flex-grow justify-center overflow-hidden">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+
+                    <!-- Time Counter -->
+                    <div class="text-xs sm:text-sm font-bold text-sky-900 font-mono min-w-[65px] text-center shrink-0" dir="ltr">
+                        <span id="voice-current-time">0:00</span> / <span id="voice-duration">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Range Slider -->
+                <input type="range" id="voice-seek" value="0" max="100" class="w-full accent-sky-600 cursor-pointer h-2 bg-gray-200 rounded-lg" onchange="seekVoiceMessage(this.value)">
+
+                <!-- HTML5 Audio Component -->
+                <audio id="main-voice-audio" preload="auto" autoplay>
+                    <source src="2.mp3" type="audio/mp3">
+                    متصفحك لا يدعم تشغيل هذا الملف الصوتي.
+                </audio>
+            </div>
+        </section>
+
+        <!-- Interactive File Cards Container (مربعات الملفات المرفقة) -->
+        <section class="w-full">
+            <div class="text-center sm:text-right mb-4">
+                <h3 class="text-xl sm:text-2xl font-black text-sky-950 flex items-center justify-center sm:justify-start gap-2">
+                    <i class="fa-solid fa-folder-open text-sky-600"></i>
+                    ملفات وتذكارات التهنئة 📁
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-600 font-bold">ملفات الاحتفال المرفقة على السيرفر</p>
+            </div>
+
+            <!-- Grid Boxes -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                
+                <!-- Card 1: 1.mp4 -->
+                <div class="glass-card rounded-3xl p-5 flex flex-col justify-between items-center text-center relative overflow-hidden group">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center text-3xl mb-3 shadow-lg group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-rose-100 text-rose-800 rounded-full text-xs font-black mb-2">فيديو HD</span>
+                        <h4 class="text-lg font-black text-gray-900 mb-1">فيديو التهنئة 🎬</h4>
+                        <p class="text-xs text-gray-500 font-bold mb-4" dir="ltr">1.mp4</p>
+                    </div>
+                    <div class="flex gap-2 w-full">
+                        <button onclick="openVideoModal()" class="flex-1 py-2.5 px-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-play"></i> تشغيل الفيديو
+                        </button>
+                        <a href="1.mp4" target="_blank" download class="py-2.5 px-3 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold text-xs transition flex items-center justify-center">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: 2.mp3 -->
+                <div class="glass-card rounded-3xl p-5 flex flex-col justify-between items-center text-center relative overflow-hidden group">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-500 text-white flex items-center justify-center text-3xl mb-3 shadow-lg group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-file-audio"></i>
+                    </div>
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-sky-100 text-sky-800 rounded-full text-xs font-black mb-2">صوتية عالية الجودة</span>
+                        <h4 class="text-lg font-black text-gray-900 mb-1">الرسالة الصوتية 🎙️</h4>
+                        <p class="text-xs text-gray-500 font-bold mb-4" dir="ltr">2.mp3</p>
+                    </div>
+                    <div class="flex gap-2 w-full">
+                        <button onclick="toggleVoiceMessage()" class="flex-1 py-2.5 px-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-volume-high"></i> تشغيل الصوت
+                        </button>
+                        <a href="2.mp3" target="_blank" download class="py-2.5 px-3 rounded-xl bg-sky-100 hover:bg-sky-200 text-sky-800 font-bold text-xs transition flex items-center justify-center">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: 3.jpg -->
+                <div class="glass-card rounded-3xl p-5 flex flex-col justify-between items-center text-center relative overflow-hidden group">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-emerald-500 text-white flex items-center justify-center text-3xl mb-3 shadow-lg group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-black mb-2">صورة تذكارية</span>
+                        <h4 class="text-lg font-black text-gray-900 mb-1">الصورة التذكارية 📸</h4>
+                        <p class="text-xs text-gray-500 font-bold mb-4" dir="ltr">3.jpg</p>
+                    </div>
+                    <div class="flex gap-2 w-full">
+                        <button onclick="openImageModal()" class="flex-1 py-2.5 px-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center gap-1.5 shadow-md">
+                            <i class="fa-solid fa-expand"></i> عرض الصورة
+                        </button>
+                        <a href="3.jpg" target="_blank" download class="py-2.5 px-3 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold text-xs transition flex items-center justify-center">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Lightbox for Video (1.mp4) -->
+    <div id="video-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden items-center justify-center p-4 modal-fade opacity-0">
+        <div class="glass-panel bg-white/95 max-w-2xl w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-white flex flex-col">
+            <div class="p-4 bg-gray-100/80 border-b flex justify-between items-center">
+                <h4 class="font-black text-gray-900 text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-film text-rose-600"></i> فيديو التهنئة (1.mp4)
+                </h4>
+                <button onclick="closeVideoModal()" class="w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-2 bg-black flex justify-center items-center max-h-[70vh]">
+                <video id="modal-video-player" controls class="w-full max-h-[65vh] rounded-xl">
+                    <source src="1.mp4" type="video/mp4">
+                    متصفحك لا يدعم عرض الفيديو.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lightbox for Image (3.jpg) -->
+    <div id="image-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden items-center justify-center p-4 modal-fade opacity-0">
+        <div class="glass-panel bg-white/95 max-w-xl w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-white flex flex-col">
+            <div class="p-4 bg-gray-100/80 border-b flex justify-between items-center">
+                <h4 class="font-black text-gray-900 text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-image text-amber-600"></i> الصورة التذكارية (3.jpg)
+                </h4>
+                <button onclick="closeImageModal()" class="w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-700 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-3 bg-gray-900 flex justify-center items-center max-h-[70vh]">
+                <img src="3.jpg" alt="الصورة التذكارية دكتور أسامة" class="max-w-full max-h-[65vh] object-contain rounded-xl shadow-lg" onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=3.jpg'">
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Footnote Bar with Reserved Rights -->
+    <footer class="w-full footer-gradient-bar py-4 px-4 text-center text-white font-extrabold text-xs sm:text-sm tracking-wide shadow-2xl border-t border-white/20 z-40">
+        All rights are reserved to Dr. Mazen Badawy – Doctor of English Teaching & Testing
+    </footer>
+
+    <!-- Interactive Scripts & Audio Logic -->
+    <script>
+        const voiceAudio = document.getElementById('main-voice-audio');
+        const voicePlayBtn = document.getElementById('voice-play-btn');
+        const voicePlayIcon = document.getElementById('voice-play-icon');
+        const voiceStatus = document.getElementById('voice-status');
+        const waveform = document.getElementById('waveform');
+        const voiceCurrentTime = document.getElementById('voice-current-time');
+        const voiceDuration = document.getElementById('voice-duration');
+        const voiceSeek = document.getElementById('voice-seek');
+
+        // Autoplay Logic with Browser Restriction Fallback
+        function initVoiceAudioAutoplay() {
+            const playPromise = voiceAudio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    updateVoiceUI(true);
+                }).catch(() => {
+                    updateVoiceUI(false);
+                    voiceStatus.innerHTML = `<i class="fa-solid fa-hand-pointer text-amber-600"></i> انقر في أي مكان للتشغيل`;
+                    
+                    const handleFirstInteraction = () => {
+                        voiceAudio.play().then(() => {
+                            updateVoiceUI(true);
+                            voiceStatus.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-sky-600 animate-ping"></span> جارٍ التشغيل...`;
+                        }).catch(() => {});
+                        document.removeEventListener('click', handleFirstInteraction);
+                        document.removeEventListener('touchstart', handleFirstInteraction);
+                    };
+                    document.addEventListener('click', handleFirstInteraction);
+                    document.addEventListener('touchstart', handleFirstInteraction);
+                });
+            }
+        }
+
+        function toggleVoiceMessage() {
+            if (voiceAudio.paused) {
+                voiceAudio.play();
+                updateVoiceUI(true);
+            } else {
+                voiceAudio.pause();
+                updateVoiceUI(false);
+            }
+        }
+
+        function updateVoiceUI(isPlaying) {
+            if (isPlaying) {
+                voicePlayIcon.className = "fa-solid fa-pause";
+                waveform.classList.remove('paused');
+                voiceStatus.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-sky-600 animate-ping"></span> جارٍ التشغيل...`;
+            } else {
+                voicePlayIcon.className = "fa-solid fa-play ml-0.5";
+                waveform.classList.add('paused');
+                voiceStatus.innerHTML = `<i class="fa-solid fa-circle-pause text-gray-500"></i> متوقف مؤقتاً`;
+            }
+        }
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        voiceAudio.addEventListener('timeupdate', () => {
+            voiceCurrentTime.innerText = formatTime(voiceAudio.currentTime);
+            if (voiceAudio.duration) {
+                voiceDuration.innerText = formatTime(voiceAudio.duration);
+                voiceSeek.value = (voiceAudio.currentTime / voiceAudio.duration) * 100;
+            }
+        });
+
+        voiceAudio.addEventListener('ended', () => {
+            updateVoiceUI(false);
+            voiceSeek.value = 0;
+            voiceStatus.innerHTML = `✅ اكتملت الرسالة الصوتية`;
+        });
+
+        function seekVoiceMessage(value) {
+            if (voiceAudio.duration) {
+                voiceAudio.currentTime = (value / 100) * voiceAudio.duration;
+            }
+        }
+
+        // Modal Functions
+        function openVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const video = document.getElementById('modal-video-player');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            video.play().catch(() => {});
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const video = document.getElementById('modal-video-player');
+            video.pause();
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        function openImageModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        // Trigger Colorful Celebration Confetti
+        function launchConfettiBurst() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 120,
+                    spread: 80,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        // Continuously Create Floating Balloons
+        function createBalloons() {
+            const container = document.getElementById('balloon-container');
+            const balloonEmojis = ['🎈', '🎉', '🎂', '✨', '🎁', '❤️', '🌟'];
+            
+            for (let i = 0; i < 15; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'floating-balloon';
+                balloon.innerText = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
+                balloon.style.left = `${Math.random() * 95}%`;
+                balloon.style.fontSize = `${Math.random() * 20 + 25}px`;
+                balloon.style.animationDuration = `${Math.random() * 8 + 8}s`;
+                balloon.style.animationDelay = `${Math.random() * 5}s`;
+
+                balloon.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    balloon.style.transform = 'scale(2)';
+                    balloon.style.opacity = '0';
+                    launchConfettiBurst();
+                    setTimeout(() => balloon.remove(), 200);
+                });
+
+                container.appendChild(balloon);
+            }
+        }
+
+        // Floating Sparkle Emojis on Touch / Click Anywhere
+        document.addEventListener('click', (e) => {
+            if(e.target.closest('#video-modal') || e.target.closest('#image-modal')) return;
+            const sparkles = ['✨', '❤️', '🎉', '🌟', '💫'];
+            const elem = document.createElement('div');
+            elem.className = 'sparkle';
+            elem.innerText = sparkles[Math.floor(Math.random() * sparkles.length)];
+            elem.style.left = `${e.clientX}px`;
+            elem.style.top = `${e.clientY}px`;
+            document.body.appendChild(elem);
+
+            setTimeout(() => {
+                elem.remove();
+            }, 800);
+        });
+
+        // Initialize Page Effects on Load
+        window.onload = function() {
+            createBalloons();
+            initVoiceAudioAutoplay();
+            setTimeout(() => {
+                launchConfettiBurst();
+            }, 400);
+        };
+    </script>
+</body>
+</html>
